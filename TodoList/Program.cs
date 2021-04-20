@@ -1,9 +1,12 @@
 ﻿using System;
+using TodoList.Models.Database.Repository;
 
 namespace TodoList
 {
     class MainClass
     {
+        static TodosRepository todosRepository = new TodosRepository();
+
         public static void Main(string[] args)
         {
             int action;
@@ -23,7 +26,7 @@ namespace TodoList
                 switch(action)
                 {
                     case 1:
-
+                        CreateNewTask();
                         break;
                     case 2:
 
@@ -40,6 +43,18 @@ namespace TodoList
                         break;
                 }
             }
+        }
+
+        static void CreateNewTask()
+        {
+            todosRepository.Create(new Models.Database.Entity.ToDoItem
+            {
+                Name = "Some name",
+                Description = "Some description",
+                Start = DateTime.Now,
+                End = new DateTime(2021, 05, 01),
+                Priority = Models.Database.Entity.TodoPriority.Low
+            });
         }
     }
 }
