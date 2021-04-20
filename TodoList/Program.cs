@@ -1,4 +1,5 @@
 ﻿using System;
+using TodoList.Models.Database.Entity;
 using TodoList.Models.Database.Repository;
 
 namespace TodoList
@@ -13,8 +14,6 @@ namespace TodoList
 
             while(true)
             {
-                Console.Clear();
-
                 Console.WriteLine("[1] Create new task");
                 Console.WriteLine("[2] Show all tasks");
                 Console.WriteLine("[3] Edit task");
@@ -32,8 +31,7 @@ namespace TodoList
 
                         break;
                     case 3:
-
-
+                        EditTask(null);
                         break;
                     case 4:
 
@@ -45,9 +43,15 @@ namespace TodoList
             }
         }
 
+        static void EditTask(ToDoItem task)
+        {
+            task.Name = "Edited" + task.Name;
+            // TODO: save to DB
+        }
+
         static void CreateNewTask()
         {
-            todosRepository.Create(new Models.Database.Entity.ToDoItem
+            todosRepository.Create(new ToDoItem
             {
                 Name = "Some name",
                 Description = "Some description",
