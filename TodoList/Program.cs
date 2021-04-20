@@ -29,7 +29,7 @@ namespace TodoList
                         CreateNewTask();
                         break;
                     case 2:
-
+                        DeleteSelectedTask(0);
                         break;
                     case 3:
 
@@ -55,6 +55,11 @@ namespace TodoList
                 End = new DateTime(2021, 05, 01),
                 Priority = Models.Database.Entity.TodoPriority.Low
             });
+        }
+
+        static void DeleteSelectedTask(int index)
+        {
+
         }
     }
 }
